@@ -8,14 +8,18 @@ namespace secontProj
         static void Main(string[] args)
         {
 
+
+            // Первый блок кода.
+
             Console.WriteLine("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать");
-            
+
             int checkNumber = 0;
 
-           
+
             bool isNumberCheckBoolEncoder = false;
 
-            while (isNumberCheckBoolEncoder != true) {
+            while (isNumberCheckBoolEncoder != true)
+            {
                 string choiceEncoderOrDecoder = Console.ReadLine();
                 bool isBoolNumber = int.TryParse(choiceEncoderOrDecoder, out checkNumber);
 
@@ -33,20 +37,21 @@ namespace secontProj
                     isNumberCheckBoolEncoder = false;
                 }
             }
-            
 
+            // второй блок кода
             Console.WriteLine("Введите ваше слово на русском языке.");
             string userWord = Console.ReadLine();
-            
+
             Console.WriteLine("Теперь введите число на которое будут сдвинуты все буквы, число не должно быть больше 33 и меньше 0. ");
-            
+
             int isNumberEncoderAndDecoder = 0;
 
-            
+
             bool isCheckBool = false;
-           
-            while (isCheckBool != true) { 
-                
+
+            while (isCheckBool != true)
+            {
+
                 string userInputSrting = Console.ReadLine();
                 bool isBool = int.TryParse(userInputSrting, out isNumberEncoderAndDecoder);
                 if (isNumberEncoderAndDecoder < 34 & isNumberEncoderAndDecoder > -1)
@@ -58,7 +63,7 @@ namespace secontProj
                     Console.WriteLine("вы ввели не число, или число выходящее за приделы диапазона");
                     isCheckBool = false;
                 }
-                
+
             }
 
 
@@ -70,10 +75,9 @@ namespace secontProj
             {
                 Console.WriteLine(Decoder(userWord, isNumberEncoderAndDecoder));
             }
-           
 
-            ///ddasdasd
-            /// losasdadasasdasd
+
+            // третий блок
         }
 
         /// <summary>
@@ -86,23 +90,23 @@ namespace secontProj
         {
 
 
-            char[] lowerCaseAlphabet = { 'а','б', 'в', 'г', 'д', 'е','ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
+            char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
             char space = ' ';
             int[] arryOfIndeces = new int[userWord.Length];
             for (int i = 0; i < userWord.Length; i++)
             {
-               
-                
+
+
                 int oneIndex = 0;
 
                 for (int j = 0; j < lowerCaseAlphabet.Length; j++)
                 {
-                    
-                    if (lowerCaseAlphabet[j] == userWord[i]) 
+
+                    if (lowerCaseAlphabet[j] == userWord[i])
                         oneIndex = j;
                 }
 
-                
+
                 oneIndex += userNumber;
                 if (userWord[i] == space)
                 {
@@ -111,10 +115,10 @@ namespace secontProj
                 }
                 else if (oneIndex > 32)
                     oneIndex -= 33;
-                    arryOfIndeces[i] = oneIndex;
+                arryOfIndeces[i] = oneIndex;
             }
-            
-            
+
+
 
             string encoderString = "";
             for (int k = 0; k < arryOfIndeces.Length; k++)
@@ -130,9 +134,10 @@ namespace secontProj
             }
 
             return encoderString;
-            
+
         }
 
+        // четвертый блок
 
         /// <summary>
         /// Дешифратор по методу цезаря используя пользовательский введеный текст и сдвиг на заданное число.
@@ -184,11 +189,23 @@ namespace secontProj
             }
 
             return decoderString;
-          }
-            
-            private static int ReadNumberInRange(int min, int max, string message) 
+        }
+
+
+        private static int ReadNumberInRange(int min, int max, string message)
+        {
+            Console.WriteLine(message);
+            while (true)
             {
-                return 1;
+                var input = Console.ReadLine();
+
+                if (int.TryParse(input, out var result))
+                {
+                    return result;
+                }
             }
         }
+    
+    
     }
+}
