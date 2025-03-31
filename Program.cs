@@ -133,7 +133,7 @@ namespace secontProj
             
         }
 
-        
+
         /// <summary>
         /// Дешифратор по методу цезаря используя пользовательский введеный текст и сдвиг на заданное число.
         /// </summary>
@@ -152,26 +152,26 @@ namespace secontProj
                 for (int j = 0; j < lowerCaseAlphabet.Length; j++)
                 {
                     if ((lowerCaseAlphabet[j] == userWord[i]))
-                        oneIndex  = j;
+                        oneIndex = j;
                 }
                 oneIndex -= userNumber;
                 if (userWord[i] == space)
                 {
                     arryOfIndeces[i] = 38;
                 }
-            else if (oneIndex < 0)
-                oneIndex += 33;
+                else if (oneIndex < 0)
+                    oneIndex += 33;
                 arryOfIndeces[i] = oneIndex;
             }
 
             string decoderString = "";
-            for (int k = 0; k  < arryOfIndeces.Length; k++)
+            for (int k = 0; k < arryOfIndeces.Length; k++)
             {
                 if (arryOfIndeces[k] == -userNumber)
                 {
                     decoderString += space;
                 }
-                else if (arryOfIndeces[k] < 0) 
+                else if (arryOfIndeces[k] < 0)
                 {
 
                     continue;
@@ -180,10 +180,15 @@ namespace secontProj
                 {
                     decoderString += lowerCaseAlphabet[arryOfIndeces[k]];
                 }
-                
+
             }
 
             return decoderString;
+          }
+            
+            private static int ReadNumberInRange(int min, int max, string message) 
+            {
+                return 1;
+            }
         }
     }
-}
