@@ -66,7 +66,7 @@ namespace secontProj
 
             }
 
-
+            // заменить на enum
             if (checkNumber == 1)
             {
                 Console.WriteLine(Encoder(userWord, isNumberEncoderAndDecoder));
