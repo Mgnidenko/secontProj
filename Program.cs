@@ -16,25 +16,23 @@ namespace secontProj
             int checkNumber = 0;
 
 
-            bool isNumberCheckBoolEncoder = false;
-
-            while (isNumberCheckBoolEncoder != true)
+            while (true)
             {
                 string choiceEncoderOrDecoder = Console.ReadLine();
                 bool isBoolNumber = int.TryParse(choiceEncoderOrDecoder, out checkNumber);
 
                 if (checkNumber == 1)
                 {
-                    isNumberCheckBoolEncoder = true;
+                    break;
                 }
                 else if (checkNumber == 2)
                 {
-                    isNumberCheckBoolEncoder = true;
+                    break;
                 }
                 else
                 {
                     Console.WriteLine("Вы ввелм не число или число больше 2 или меньше 1");
-                    isNumberCheckBoolEncoder = false;
+                    continue;
                 }
             }
 
