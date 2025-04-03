@@ -38,7 +38,7 @@ namespace secontProj
             string userWord = Console.ReadLine();
 
             Console.WriteLine("Теперь введите число на которое будут сдвинуты все буквы, число не должно быть больше 33 и меньше 0. ");
-            int isNumberKey = ReadNumberInRange(0, 33, "");
+            int isNumberKey = ReadNumberInRange(0, 33, "555");
 
 
             while (true)
@@ -50,6 +50,7 @@ namespace secontProj
                 else
                 {
                     isNumberKey = ReadNumberInRange(34, -1, "вы ввели не число, или число выходящее за приделы диапазона");
+                    continue;
                 }
 
             }
