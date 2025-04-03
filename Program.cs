@@ -11,16 +11,14 @@ namespace secontProj
 
             // Первый блок кода.
 
-            Console.WriteLine("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать");
+            Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
 
-            int checkNumber = 0;
+            int checkNumber = ReadNumberInRange(1, 2, "");
+            Console.WriteLine(checkNumber);
 
 
             while (true)
             {
-                string choiceEncoderOrDecoder = Console.ReadLine();
-                bool isBoolNumber = int.TryParse(choiceEncoderOrDecoder, out checkNumber);
-
                 if (checkNumber == 1)
                 {
                     break;
@@ -31,7 +29,7 @@ namespace secontProj
                 }
                 else
                 {
-                    Console.WriteLine("Вы ввелм не число или число больше 2 или меньше 1");
+                    checkNumber = ReadNumberInRange(1, 2, "Вы ввели не число или число больше 2 или меньше 1: ");
                     continue;
                 }
             }
@@ -41,25 +39,18 @@ namespace secontProj
             string userWord = Console.ReadLine();
 
             Console.WriteLine("Теперь введите число на которое будут сдвинуты все буквы, число не должно быть больше 33 и меньше 0. ");
+            int isNumberKey = ReadNumberInRange(34, -1, "");
 
-            int isNumberEncoderAndDecoder = 0;
 
-
-            bool isCheckBool = false;
-
-            while (isCheckBool != true)
+            while (true)
             {
-
-                string userInputSrting = Console.ReadLine();
-                bool isBool = int.TryParse(userInputSrting, out isNumberEncoderAndDecoder);
-                if (isNumberEncoderAndDecoder < 34 & isNumberEncoderAndDecoder > -1)
+                if (isNumberKey < 34 & isNumberKey > -1)
                 {
-                    isCheckBool = true;
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("вы ввели не число, или число выходящее за приделы диапазона");
-                    isCheckBool = false;
+                    isNumberKey = ReadNumberInRange(34, -1, "вы ввели не число, или число выходящее за приделы диапазона");
                 }
 
             }
@@ -67,11 +58,11 @@ namespace secontProj
             // заменить на enum
             if (checkNumber == 1)
             {
-                Console.WriteLine(Encoder(userWord, isNumberEncoderAndDecoder));
+                Console.WriteLine(Encoder(userWord, isNumberKey));
             }
             else if (checkNumber == 2)
             {
-                Console.WriteLine(Decoder(userWord, isNumberEncoderAndDecoder));
+                Console.WriteLine(Decoder(userWord, isNumberKey));
             }
 
 
@@ -192,18 +183,35 @@ namespace secontProj
 
         private static int ReadNumberInRange(int min, int max, string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             while (true)
             {
                 var input = Console.ReadLine();
 
                 if (int.TryParse(input, out var result))
                 {
-                    return result;
+                    if (result > min ^ result < max)
+                    {
+                        return result;
+                    }
                 }
+                else
+                {
+                    PrintError("Введите число");
+                }
+
+
+
             }
         }
-    
-    
+
+        private static void PrintError(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+
     }
 }
