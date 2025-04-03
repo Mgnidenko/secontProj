@@ -14,7 +14,6 @@ namespace secontProj
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
 
             int checkNumber = ReadNumberInRange(1, 2, "");
-            Console.WriteLine(checkNumber);
 
 
             while (true)
@@ -39,12 +38,12 @@ namespace secontProj
             string userWord = Console.ReadLine();
 
             Console.WriteLine("Теперь введите число на которое будут сдвинуты все буквы, число не должно быть больше 33 и меньше 0. ");
-            int isNumberKey = ReadNumberInRange(34, -1, "");
+            int isNumberKey = ReadNumberInRange(0, 33, "");
 
 
             while (true)
             {
-                if (isNumberKey < 34 & isNumberKey > -1)
+                if (isNumberKey > -1 & isNumberKey < 34)
                 {
                     break;
                 }
