@@ -14,11 +14,7 @@ namespace secontProj
 
             while (true)
             {
-                if (checkNumber == 1)
-                {
-                    break;
-                }
-                else if (checkNumber == 2)
+                if (checkNumber == 1 | checkNumber == 2)
                 {
                     break;
                 }
@@ -44,10 +40,8 @@ namespace secontProj
                 }
                 else
                 {
-                    isNumberKey = ReadNumberInRange(34, -1, "вы ввели не число, или число выходящее за приделы диапазона");
-                    continue;
+                    isNumberKey = ReadNumberInRange(0, 33, "вы ввели не число, или число выходящее за приделы диапазона: ");
                 }
-
             }
 
             // заменить на enum
