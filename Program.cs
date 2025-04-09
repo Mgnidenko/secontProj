@@ -8,11 +8,7 @@ namespace secontProj
         static void Main(string[] args)
         {
 
-
-            // Первый блок кода.
-
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
-
             int checkNumber = ReadNumberInRange(1, 2, "");
 
 
@@ -33,12 +29,11 @@ namespace secontProj
                 }
             }
 
-            // второй блок кода
             Console.WriteLine("Введите ваше слово на русском языке.");
             string userWord = Console.ReadLine();
 
             Console.WriteLine("Теперь введите число на которое будут сдвинуты все буквы, число не должно быть больше 33 и меньше 0. ");
-            int isNumberKey = ReadNumberInRange(0, 33, "555");
+            int isNumberKey = ReadNumberInRange(0, 33, "");
 
 
             while (true)
@@ -121,9 +116,7 @@ namespace secontProj
                     encoderString += lowerCaseAlphabet[arryOfIndeces[k]];
                 }
             }
-
             return encoderString;
-
         }
 
         // четвертый блок
@@ -174,9 +167,7 @@ namespace secontProj
                 {
                     decoderString += lowerCaseAlphabet[arryOfIndeces[k]];
                 }
-
             }
-
             return decoderString;
         }
 
@@ -190,7 +181,7 @@ namespace secontProj
 
                 if (int.TryParse(input, out var result))
                 {
-                    if (result > min ^ result < max)
+                    if (result >= min | result < max)
                     {
                         return result;
                     }
@@ -199,9 +190,6 @@ namespace secontProj
                 {
                     PrintError("Введите число");
                 }
-
-
-
             }
         }
 
@@ -211,7 +199,5 @@ namespace secontProj
             Console.WriteLine(message);
             Console.ResetColor();
         }
-
-
     }
 }
