@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace secontProj
@@ -10,6 +11,7 @@ namespace secontProj
 
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
             int checkNumber = ReadNumberInRange(1, 2, "");
+
 
 
             while (true)
@@ -52,10 +54,7 @@ namespace secontProj
             else if (checkNumber == 2)
             {
                 Console.WriteLine(Decoder(userWord, isNumberKey));
-            }
-
-
-            // третий блок
+            }   
         }
 
         /// <summary>
@@ -112,8 +111,6 @@ namespace secontProj
             }
             return encoderString;
         }
-
-        // четвертый блок
 
         /// <summary>
         /// Дешифратор по методу цезаря используя пользовательский введеный текст и сдвиг на заданное число.
