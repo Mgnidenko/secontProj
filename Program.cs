@@ -9,6 +9,8 @@ namespace secontProj
         static void Main(string[] args)
         {
 
+            
+
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
             int checkNumber = ReadNumberInRange(1, 2, "");
 
@@ -47,11 +49,11 @@ namespace secontProj
             }
 
             // заменить на enum
-            if (checkNumber == 1)
+            if (checkNumber == (int)definitionFunction.Encoder)
             {
                 Console.WriteLine(Encoder(userWord, isNumberKey));
             }
-            else if (checkNumber == 2)
+            else if (checkNumber == (int)definitionFunction.Decoder)
             {
                 Console.WriteLine(Decoder(userWord, isNumberKey));
             }   
@@ -80,8 +82,8 @@ namespace secontProj
                         oneIndex = j;
                 }
 
-                //
-                oneIndex += userNumber;
+                
+                oneIndex = oneIndex + userNumber;
                 if (userWord[i] == space)
                 {
                     arryOfIndeces[i] = 38;
@@ -133,7 +135,8 @@ namespace secontProj
                 oneIndex = oneIndex - userNumber;
                 if (userWord[i] == space)
                 {
-                    arryOfIndeces[i] = 38;
+                    arryOfIndeces[i] = 38;                       
+                    Console.WriteLine(arryOfIndeces[i]); // решить проблему с пробелом и можно будет объеденить функции
                 }
                 else if (oneIndex < 0)
                     oneIndex += 33;
@@ -147,12 +150,8 @@ namespace secontProj
             {
                 if (arryOfIndeces[k] == -userNumber)
                 {
-                    decoderString += space;
-                }
-                else if (arryOfIndeces[k] < 0)
-                {
-
-                    continue;
+                    decoderString += space;                   // пробел такой же как и -userNumer
+                    
                 }
                 else
                 {
@@ -160,6 +159,43 @@ namespace secontProj
                 }
             }
             return decoderString;
+        }
+
+        public enum definitionFunction
+        {
+            Decoder = 2,
+            Encoder = 1
+        }
+
+        private static string unionFun(string userWord, int userNumber, int unionMeaning)
+        {
+            char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
+            char space = ' ';
+            int[] arryOfIndeces = new int[userWord.Length];
+            for (int indexUserWord = 0; indexUserWord < userWord.Length; indexUserWord++)
+            {
+
+                int oneIndex = 0;
+                for (int j = 0; j < lowerCaseAlphabet.Length; j++)
+                {
+                    if (lowerCaseAlphabet[j] == userWord[indexUserWord])
+                        oneIndex = j;
+                }
+
+                
+                oneIndex = oneIndex + (unionMeaning * userNumber);
+                // все что выше это может стать кодировщиком так и декодировщиком
+                if (userWord[indexUserWord] == space)
+                {
+                    arryOfIndeces[indexUserWord] = 38;
+                    continue;
+                }
+                else if (oneIndex < 0 | oneIndex > 32)
+                    oneIndex = oneIndex + (33 * unionMeaning);
+                arryOfIndeces[indexUserWord] = oneIndex;
+            }
+
+            return "l";
         }
 
 
