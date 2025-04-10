@@ -73,17 +73,14 @@ namespace secontProj
             for (int i = 0; i < userWord.Length; i++)
             {
 
-
                 int oneIndex = 0;
-
                 for (int j = 0; j < lowerCaseAlphabet.Length; j++)
                 {
-
                     if (lowerCaseAlphabet[j] == userWord[i])
                         oneIndex = j;
                 }
 
-
+                //
                 oneIndex += userNumber;
                 if (userWord[i] == space)
                 {
@@ -132,7 +129,8 @@ namespace secontProj
                     if ((lowerCaseAlphabet[j] == userWord[i]))
                         oneIndex = j;
                 }
-                oneIndex -= userNumber;
+
+                oneIndex = oneIndex - userNumber;
                 if (userWord[i] == space)
                 {
                     arryOfIndeces[i] = 38;
@@ -140,6 +138,8 @@ namespace secontProj
                 else if (oneIndex < 0)
                     oneIndex += 33;
                 arryOfIndeces[i] = oneIndex;
+
+
             }
 
             string decoderString = "";
@@ -189,6 +189,16 @@ namespace secontProj
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
             Console.ResetColor();
+        }
+
+        private static string UniteFun(string userWord, int userNumber, int inVan)
+        {
+
+
+
+
+
+            return "";
         }
     }
 }
