@@ -9,7 +9,7 @@ namespace secontProj
         static void Main(string[] args)
         {
 
-            
+
 
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
             int checkNumber = ReadNumberInRange(1, 2, "");
@@ -51,115 +51,15 @@ namespace secontProj
             // заменить на enum
             if (checkNumber == (int)definitionFunction.Encoder)
             {
-                Console.WriteLine(Encoder(userWord, isNumberKey));
+                Console.WriteLine(unionFun(userWord, isNumberKey, 1));
             }
             else if (checkNumber == (int)definitionFunction.Decoder)
             {
-                Console.WriteLine(Decoder(userWord, isNumberKey));
-            }   
+                Console.WriteLine(unionFun(userWord, isNumberKey, -1));
+            }
         }
 
-        /// <summary>
-        /// Метод шифрует пользовательский текст по методу Цезаря
-        /// </summary>
-        /// <param name="userWord"></param>
-        /// <param name="userNumber"></param>
-        /// <returns></returns>
-        static string Encoder(string userWord, int userNumber)
-        {
 
-
-            char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
-            char space = ' ';
-            int[] arryOfIndeces = new int[userWord.Length];
-            for (int i = 0; i < userWord.Length; i++)
-            {
-
-                int oneIndex = 0;
-                for (int j = 0; j < lowerCaseAlphabet.Length; j++)
-                {
-                    if (lowerCaseAlphabet[j] == userWord[i])
-                        oneIndex = j;
-                }
-
-                
-                oneIndex = oneIndex + userNumber;
-                if (userWord[i] == space)
-                {
-                    arryOfIndeces[i] = 38;
-                    continue;
-                }
-                else if (oneIndex > 32)
-                    oneIndex -= 33;
-                arryOfIndeces[i] = oneIndex;
-            }
-
-
-
-            string encoderString = "";
-            for (int k = 0; k < arryOfIndeces.Length; k++)
-            {
-                if (arryOfIndeces[k] == 38)
-                {
-                    encoderString += space;
-                }
-                else
-                {
-                    encoderString += lowerCaseAlphabet[arryOfIndeces[k]];
-                }
-            }
-            return encoderString;
-        }
-
-        /// <summary>
-        /// Дешифратор по методу цезаря используя пользовательский введеный текст и сдвиг на заданное число.
-        /// </summary>
-        /// <param name="userWord"></param>
-        /// <param name="userNumber"></param>
-        /// <returns></returns>
-        static string Decoder(string userWord, int userNumber)
-        {
-            char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
-            int[] arryOfIndeces = new int[userWord.Length];
-            char space = ' ';
-
-            for (int i = 0; i < userWord.Length; i++)
-            {
-                int oneIndex = 0;
-                for (int j = 0; j < lowerCaseAlphabet.Length; j++)
-                {
-                    if ((lowerCaseAlphabet[j] == userWord[i]))
-                        oneIndex = j;
-                }
-
-                oneIndex = oneIndex - userNumber;
-                if (userWord[i] == space)
-                {
-                    arryOfIndeces[i] = 38;                       
-                    Console.WriteLine(arryOfIndeces[i]); // решить проблему с пробелом и можно будет объеденить функции
-                }
-                else if (oneIndex < 0)
-                    oneIndex += 33;
-                arryOfIndeces[i] = oneIndex;
-
-
-            }
-
-            string decoderString = "";
-            for (int k = 0; k < arryOfIndeces.Length; k++)
-            {
-                if (arryOfIndeces[k] == -userNumber)
-                {
-                    decoderString += space;                   // пробел такой же как и -userNumer
-                    
-                }
-                else
-                {
-                    decoderString += lowerCaseAlphabet[arryOfIndeces[k]];
-                }
-            }
-            return decoderString;
-        }
 
         public enum definitionFunction
         {
@@ -182,7 +82,7 @@ namespace secontProj
                         oneIndex = j;
                 }
 
-                
+
                 oneIndex = oneIndex + (unionMeaning * userNumber);
                 // все что выше это может стать кодировщиком так и декодировщиком
                 if (userWord[indexUserWord] == space)
@@ -195,7 +95,23 @@ namespace secontProj
                 arryOfIndeces[indexUserWord] = oneIndex;
             }
 
-            return "l";
+
+
+
+            string answerString = "";
+            for (int k = 0; k < arryOfIndeces.Length; k++)
+            {
+                if (arryOfIndeces[k] == -userNumber | arryOfIndeces[k] == 38)
+                {
+                    answerString += space;                   // пробел такой же как и -userNumer
+
+                }
+                else
+                {
+                    answerString += lowerCaseAlphabet[arryOfIndeces[k]];
+                }
+            }
+            return answerString;
         }
 
 
@@ -227,14 +143,5 @@ namespace secontProj
             Console.ResetColor();
         }
 
-        private static string UniteFun(string userWord, int userNumber, int inVan)
-        {
-
-
-
-
-
-            return "";
-        }
     }
 }
