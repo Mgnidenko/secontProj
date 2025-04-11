@@ -9,12 +9,8 @@ namespace secontProj
         static void Main(string[] args)
         {
 
-
-
             Console.Write("Введите цифру 1, если вам нужно зашифровать текст , введите цифру 2 если текст нужно расшифровать: ");
             int checkNumber = ReadNumberInRange(1, 2, "");
-
-
 
             while (true)
             {
@@ -60,19 +56,12 @@ namespace secontProj
         }
 
 
-
-        public enum definitionFunction
-        {
-            Decoder,
-            Encoder
-        }
-
         private static string unionFun(string userWord, int userNumber, int unionMeaning)
         {
             char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
             char space = ' ';
             int[] arryOfIndeces = new int[userWord.Length];
-Console.WriteLine(arryOfIndeces[2]);
+
             for (int indexUserWord = 0; indexUserWord < userWord.Length; indexUserWord++)
             {
 
@@ -84,11 +73,15 @@ Console.WriteLine(arryOfIndeces[2]);
                 }
 
 
-                oneIndex = oneIndex + (unionMeaning * userNumber);
+                if (unionMeaning == -1)
+                    oneIndex += userNumber;
+                else
+                    oneIndex -= userNumber;
+
 
                 if (userWord[indexUserWord] == space)
                 {
-                    arryOfIndeces[indexUserWord] = 38;
+                    arryOfIndeces[indexUserWord] = space;
                     continue;
                 }
                 else if (oneIndex < 0 | oneIndex > 32)
@@ -100,7 +93,7 @@ Console.WriteLine(arryOfIndeces[2]);
             string answerString = "";
             for (int k = 0; k < arryOfIndeces.Length; k++)
             {
-                if (arryOfIndeces[k] == -userNumber | arryOfIndeces[k] == 38)
+                if (arryOfIndeces[k] == -userNumber | arryOfIndeces[k] == space)
                 {
                     answerString += space;                  
 
