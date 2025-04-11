@@ -48,7 +48,7 @@ namespace secontProj
                 }
             }
 
-            // заменить на enum
+
             if (checkNumber == (int)definitionFunction.Encoder)
             {
                 Console.WriteLine(unionFun(userWord, isNumberKey, 1));
@@ -63,8 +63,8 @@ namespace secontProj
 
         public enum definitionFunction
         {
-            Decoder = 2,
-            Encoder = 1
+            Decoder,
+            Encoder
         }
 
         private static string unionFun(string userWord, int userNumber, int unionMeaning)
@@ -72,6 +72,7 @@ namespace secontProj
             char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
             char space = ' ';
             int[] arryOfIndeces = new int[userWord.Length];
+
             for (int indexUserWord = 0; indexUserWord < userWord.Length; indexUserWord++)
             {
 
@@ -84,7 +85,7 @@ namespace secontProj
 
 
                 oneIndex = oneIndex + (unionMeaning * userNumber);
-                // все что выше это может стать кодировщиком так и декодировщиком
+
                 if (userWord[indexUserWord] == space)
                 {
                     arryOfIndeces[indexUserWord] = 38;
@@ -96,14 +97,12 @@ namespace secontProj
             }
 
 
-
-
             string answerString = "";
             for (int k = 0; k < arryOfIndeces.Length; k++)
             {
                 if (arryOfIndeces[k] == -userNumber | arryOfIndeces[k] == 38)
                 {
-                    answerString += space;                   // пробел такой же как и -userNumer
+                    answerString += space;                  
 
                 }
                 else
