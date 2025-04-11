@@ -49,11 +49,11 @@ namespace secontProj
             }
 
 
-            if (checkNumber == (int)definitionFunction.Encoder)
+            if (checkNumber == 1)
             {
                 Console.WriteLine(unionFun(userWord, isNumberKey, 1));
             }
-            else if (checkNumber == (int)definitionFunction.Decoder)
+            else if (checkNumber == 2)
             {
                 Console.WriteLine(unionFun(userWord, isNumberKey, -1));
             }
@@ -72,7 +72,7 @@ namespace secontProj
             char[] lowerCaseAlphabet = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
             char space = ' ';
             int[] arryOfIndeces = new int[userWord.Length];
-
+Console.WriteLine(arryOfIndeces[2]);
             for (int indexUserWord = 0; indexUserWord < userWord.Length; indexUserWord++)
             {
 
@@ -95,7 +95,7 @@ namespace secontProj
                     oneIndex = oneIndex + (33 * unionMeaning);
                 arryOfIndeces[indexUserWord] = oneIndex;
             }
-
+            
 
             string answerString = "";
             for (int k = 0; k < arryOfIndeces.Length; k++)
