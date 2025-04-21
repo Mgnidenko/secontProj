@@ -46,15 +46,15 @@ namespace secontProj
                 }
             }
 
-            // заменить на enum
-            if (checkNumber == 1)
+
+            if (checkNumber == (int)Choice.Encoder)
             {
                 Console.WriteLine(Encoder(userWord, isNumberKey));
             }
-            else if (checkNumber == 2)
+            else if (checkNumber == (int)Choice.Decoder)
             {
                 Console.WriteLine(Decoder(userWord, isNumberKey));
-            }   
+            }
         }
 
         /// <summary>
@@ -191,14 +191,10 @@ namespace secontProj
             Console.ResetColor();
         }
 
-        private static string UniteFun(string userWord, int userNumber, int inVan)
+        enum Choice
         {
-
-
-
-
-
-            return "";
+            Encoder = 1,
+            Decoder = 2
         }
     }
 }
