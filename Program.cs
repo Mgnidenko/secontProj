@@ -162,7 +162,7 @@ namespace secontProj
             return decoderString;
         }
 
-
+        //
         private static int ReadNumberInRange(int min, int max, string message)
         {
             Console.Write(message);
